@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smartshop dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>body{font-family:system-ui;background:#f6f7fb;margin:0;padding:16px;color:#14162b}.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.c{background:#fff;border-radius:16px;padding:16px;border:1px solid #e4e6f0}a.b{background:#4b3df5;color:#fff;padding:8px 14px;border-radius:10px;text-decoration:none;margin-right:6px}h1{margin:0 0 12px}</style></head><body>
+<h1>Smartshop dashboard</h1>
+<p><a class="b" href="/admin/">Manage data</a><a class="b" href="/dashboard/orders.csv">Export CSV</a><a class="b" href="/dashboard/report.pdf">Export PDF</a></p>
+<div class="g"><div class="c"><small>Total sales</small><h2>₹{{ s.total|floatformat:2 }}</h2></div><div class="c"><small>Orders</small><h2>{{ s.orders }}</h2></div>
+<div class="c"><small>Low stock alerts</small>{% for n,q in s.low %}<p>{{ n }}: <b>{{ q }} left</b></p>{% empty %}<p>All products are well stocked.</p>{% endfor %}</div></div>
+<div class="g" style="margin-top:12px"><div class="c"><h3>Revenue trend (₹)</h3><canvas id="a"></canvas></div><div class="c"><h3>Top-selling products</h3><canvas id="b"></canvas></div></div>
+{{ data|json_script:"d" }}
+<script>const d=JSON.parse(document.getElementById("d").textContent);
+new Chart(document.getElementById("a"),{type:"line",data:{labels:d.days.map(x=>x[0]),datasets:[{label:"Revenue",data:d.days.map(x=>x[1]),borderColor:"#4b3df5",tension:.3}]}});
+new Chart(document.getElementById("b"),{type:"bar",data:{labels:d.top.map(x=>x[0]),datasets:[{label:"Units sold",data:d.top.map(x=>x[1]),backgroundColor:"#4b3df5"}]}});</script></body></html>

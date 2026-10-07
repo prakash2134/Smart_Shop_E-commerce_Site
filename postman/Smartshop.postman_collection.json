@@ -1,0 +1,223 @@
+{
+ "info": {
+  "name": "Smartshop API",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+ },
+ "variable": [
+  {
+   "key": "base",
+   "value": "http://localhost:8010"
+  },
+  {
+   "key": "token",
+   "value": ""
+  }
+ ],
+ "item": [
+  {
+   "name": "Register",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": "{{base}}/auth/register",
+    "body": {
+     "mode": "raw",
+     "raw": "{\"name\": \"Asha\", \"email\": \"asha@example.com\", \"password\": \"pass1234\"}"
+    }
+   }
+  },
+  {
+   "name": "Login (copy access_token into token variable)",
+   "request": {
+    "method": "POST",
+    "header": [],
+    "url": "{{base}}/auth/login",
+    "body": {
+     "mode": "urlencoded",
+     "urlencoded": [
+      {
+       "key": "username",
+       "value": "asha@example.com"
+      },
+      {
+       "key": "password",
+       "value": "pass1234"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "Auth0 login",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": "{{base}}/auth/auth0",
+    "body": {
+     "mode": "raw",
+     "raw": "{\"id_token\": \"<auth0 id token>\"}"
+    }
+   }
+  },
+  {
+   "name": "Me",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/me"
+   }
+  },
+  {
+   "name": "Products",
+   "request": {
+    "method": "GET",
+    "header": [],
+    "url": "{{base}}/products?category=Audio&sort=price_asc&min_price=500"
+   }
+  },
+  {
+   "name": "Cart",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/cart"
+   }
+  },
+  {
+   "name": "Add to cart",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     },
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": "{{base}}/cart",
+    "body": {
+     "mode": "raw",
+     "raw": "{\"product_id\": 1, \"quantity\": 1}"
+    }
+   }
+  },
+  {
+   "name": "Remove from cart",
+   "request": {
+    "method": "DELETE",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/cart/1"
+   }
+  },
+  {
+   "name": "Checkout",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/checkout"
+   }
+  },
+  {
+   "name": "Stripe webhook",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Content-Type",
+      "value": "application/json"
+     }
+    ],
+    "url": "{{base}}/payments/webhook",
+    "body": {
+     "mode": "raw",
+     "raw": "{}"
+    }
+   }
+  },
+  {
+   "name": "My orders",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/orders"
+   }
+  },
+  {
+   "name": "All orders (staff/admin)",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/admin/orders"
+   }
+  },
+  {
+   "name": "Notifications",
+   "request": {
+    "method": "GET",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/notifications"
+   }
+  },
+  {
+   "name": "Mark notification read",
+   "request": {
+    "method": "POST",
+    "header": [
+     {
+      "key": "Authorization",
+      "value": "Bearer {{token}}"
+     }
+    ],
+    "url": "{{base}}/notifications/1/read"
+   }
+  }
+ ]
+}
