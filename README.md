@@ -52,3 +52,11 @@ Import `postman/Smartshop.postman_collection.json`. Log in, then paste the `acce
 
 ## Before production
 Change `JWT_SECRET` and `DJANGO_SECRET`, set `DEBUG=False`, move to PostgreSQL, restrict CORS, and serve over HTTPS.
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 44 06 AM" src="https://github.com/user-attachments/assets/3c49f858-45f6-4157-a9b0-d9175ae00838" />
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 42 47 AM" src="https://github.com/user-attachments/assets/d387c4e4-a180-4cd3-be13-ca212395befa" />
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 42 16 AM" src="https://github.com/user-attachments/assets/c9d81c24-3ac2-4229-bdc9-6fe35a58ffc3" />
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 42 06 AM" src="https://github.com/user-attachments/assets/d150bdbf-8208-45b9-ac48-1f2d2c04e8a8" />
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 41 27 AM" src="https://github.com/user-attachments/assets/4437972a-42fe-40c8-94e7-2ff3ec787926" />
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 41 12 AM" src="https://github.com/user-attachments/assets/65be324a-28c6-4099-aacd-aa06cb7e437c" />
+
+<img width="1470" height="956" alt="Screenshot 2026-10-07 at 10 41 02 AM" src="https://github.com/user-attachments/assets/21cec975-5d1b-4efa-99ba-9e445e1b72d2" />
